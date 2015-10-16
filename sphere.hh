@@ -3,6 +3,8 @@
 
 #include "ray.hh"
 #include "camera.hh"
+#include <cmath>
+#include <climits>
 
 class Sphere
 {
@@ -10,17 +12,17 @@ class Sphere
     public:
     Sphere(int cx, int cy, int cz, int ra);
     void Calculate(Camera cam, Ray ray);
-    float getDelta();
-    int getT();
+    double getDelta();
+    double getT();
 
     private:
     int xc;
     int yc;
     int zc;
     int r;
-    int a;
-    int b;
-    int c;
+    double a;
+    double b;
+    double c;
 };
 
 #endif
