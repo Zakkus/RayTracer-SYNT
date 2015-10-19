@@ -7,17 +7,17 @@ void Sphere::Calculate(Camera cam, Ray ray)
 {
     a = pow(ray.getDirX(), 2) + pow(ray.getDirY(),2) + pow(ray.getDirZ(),2);
     b = 2 * (ray.getDirX() * (cam.getX() - xc) + ray.getDirY() * (cam.getY() -
-    yc) + ray.getDirZ() * (cam.getZ() - zc))
+    yc) + ray.getDirZ() * (cam.getZ() - zc));
     c = pow((cam.getX() - xc), 2) + pow((cam.getY() - yc), 2) + pow((cam.getZ()
     - zc), 2) - pow(r, 2);
 }
 
-double getDelta()
+double Sphere::getDelta()
 {
     return pow(b, 2) - 4 * a * c;
 }
 
-double getT()
+double Sphere::getT()
 {
     if (getDelta() == 0)
         return -b / (2 * a);
