@@ -3,17 +3,17 @@
 Ray::Ray(int x, int y, int z):dirx(x), diry(y), dirz(z)
 {}
 
-Ray::getDirX()
+int Ray::getDirX()
 {
     return dirx;
 }
 
-Ray::getDirY()
+int Ray::getDirY()
 {
     return diry;
 }
 
-Ray::getDirZ()
+int Ray::getDirZ()
 {
     return dirz;
 }
