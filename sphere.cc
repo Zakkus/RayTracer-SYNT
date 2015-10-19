@@ -1,6 +1,7 @@
 #include "sphere.hh"
 
-Sphere::Sphere(int cx, int cy, int cz, int ra):xc(cx), yc(cy), zc(cz), r(ra)
+Sphere::Sphere(int cx, int cy, int cz, int ra)
+        : xc(cx), yc(cy), zc(cz), r(ra)
 {}
 
 void Sphere::Calculate(Camera cam, Ray ray)

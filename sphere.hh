@@ -1,28 +1,24 @@
 #ifndef SPHERE_HH
 #define SPHERE_HH
 
-#include "ray.hh"
-#include "camera.hh"
-#include <cmath>
-#include <climits>
+#include "primitive.hh"
 
-class Sphere
+class Sphere : public Primitive
 {
-
     public:
-    Sphere(int cx, int cy, int cz, int ra);
-    void Calculate(Camera cam, Ray ray);
-    double getDelta();
-    double getT();
+        Sphere(int cx, int cy, int cz, int ra);
+        void Calculate(Camera cam, Ray ray);
+        double getT();
 
     private:
-    int xc;
-    int yc;
-    int zc;
-    int r;
-    double a;
-    double b;
-    double c;
+        double getDelta();
+        int xc;
+        int yc;
+        int zc;
+        int r;
+        double a;
+        double b;
+        double c;
 };
 
 #endif

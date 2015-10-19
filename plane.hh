@@ -1,15 +1,14 @@
 #ifndef PLANE_HH
 #define PLANE_HH
 
-#include "camera.hh"
-#include "ray.hh"
+#include "primitive.hh"
 
-
-class Plane
+class Plane : public Primitive
 {
     public:
         Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di);
-        double Calculate(Camera cam, Ray r);
+        void Calculate(Camera cam, Ray r);
+        double getT();
 
     private:
     //Point
