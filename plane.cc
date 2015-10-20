@@ -6,9 +6,9 @@ Plane::Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, Uint32 col)
 
 void Plane::Calculate(Camera cam, Ray r)
 {
-    int X = cam.getX() - x;
-    int Y = cam.getY() - y;
-    int Z = cam.getZ() - z;
+    double X = cam.getX() - x;
+    double Y = cam.getY() - y;
+    double Z = cam.getZ() - z;
     t = -((a*X + b * Y + c * Z + d)/(a * r.getDirX() + b * r.getDirY() + c
     * r.getDirZ()));
 }
