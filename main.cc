@@ -46,8 +46,8 @@ int main(int argc, char** argv)
     vector<Primitive*> p = vector<Primitive*>();
     Sphere d = Sphere(100,100, 0, 50, SDL_MapRGB(s->format, 0, 255, 0));
     p.push_back(&d);
-    Plane pl = Plane(0, 1, 0, 4, 5, 6, 7, SDL_MapRGB(s->format, 255, 0, 0));
-    p.push_back(&pl);
+    /*Plane pl = Plane(0, 1, 0, 4, 5, 6, 7, SDL_MapRGB(s->format, 255, 0, 0));
+    p.push_back(&pl);*/
     launch(s, cam, p);
     SDL_BlitSurface(s, NULL, screen, NULL);
     SDL_UpdateWindowSurface(w);
