@@ -20,6 +20,7 @@ class Plane : public Primitive
         int b;
         int c;
         int d;
+        double t;
 };
 
 #endif

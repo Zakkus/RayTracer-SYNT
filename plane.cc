@@ -9,7 +9,7 @@ void Plane::Calculate(Camera c, Ray r)
     int X = c.getX() - x;
     int Y = c.getY() - y;
     int Z = c.getZ() - z;
-    double t = -((a*X + b * Y + c * Z + d)/(a * r.getDirX() + b * getDirY() + c
+    t = -((a*X + b * Y + c * Z + d)/(a * r.getDirX() + b * getDirY() + c
     * getDirZ()));
 }
 
