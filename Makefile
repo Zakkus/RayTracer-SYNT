@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-std=c++11 
 LIBS=-lSDL2 -lSDL2_image
-SRC= ray.cc camera.cc sphere.cc main.cc
+SRC= ray.cc camera.cc sphere.cc plane.cc main.cc
 OBJ=$(SRC:.cc=.o)
 EXE=rt
 

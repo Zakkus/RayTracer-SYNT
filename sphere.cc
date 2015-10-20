@@ -1,7 +1,7 @@
 #include "sphere.hh"
 
-Sphere::Sphere(int cx, int cy, int cz, int ra)
-        : xc(cx), yc(cy), zc(cz), r(ra)
+Sphere::Sphere(int cx, int cy, int cz, int ra, Uint32 col)
+        : xc(cx), yc(cy), zc(cz), r(ra), color(col)
 {}
 
 void Sphere::Calculate(Camera cam, Ray ray)
@@ -33,4 +33,9 @@ double Sphere::getT()
     }
     else
         return INT_MIN;
+}
+
+Uint32 Sphere::getColor()
+{
+    return color;
 }

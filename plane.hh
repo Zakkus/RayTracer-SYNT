@@ -6,9 +6,10 @@
 class Plane : public Primitive
 {
     public:
-        Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di);
+        Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, Uint32 col);
         void Calculate(Camera cam, Ray r);
         double getT();
+        Uint32 getColor();
 
     private:
     //Point
@@ -21,6 +22,7 @@ class Plane : public Primitive
         int c;
         int d;
         double t;
+        Uint32 color;
 };
 
 #endif
