@@ -32,7 +32,7 @@ double Sphere::getT()
             return t1;
     }
     else
-        return INT_MIN;
+        return INT_MAX;
 }
 
 Uint32 Sphere::getColor()
