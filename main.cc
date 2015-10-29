@@ -30,13 +30,14 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Camera l)
                 color = v[k]->getColor();
             }
             }
-            obj->Calculate(l, ray);
+            Ray ray2 = Ray(i - l.getX(), j - l.getY(), -l.getZ());
+            obj->Calculate(l, ray2);
             double dist = obj->getT();
             for(int k =0; k < v.size(); k++)
             {
                 if (v[k] == obj)
                     continue;
-                v[k]->Calculate(l, ray);
+                v[k]->Calculate(l, ray2);
                 if(dist > v[k]->getT())
                 {
                     color = SDL_MapRGB(s->format, 0, 0, 0);

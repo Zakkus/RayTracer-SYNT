@@ -1,18 +1,19 @@
 #ifndef CAMERA_HH
 #define CAMERA_HH
 
+#include "point3.hh"
+
 class Camera
 {
     public:
-    Camera(int posx, int posy, int posz);
+    Camera(Point3 p);
+    Camera(int x, int y, int z);
     int getX();
     int getY();
     int getZ();
 
     private:
-    int x;
-    int y;
-    int z;
+        Point3 pt;
 };
 
 #endif

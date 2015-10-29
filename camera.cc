@@ -1,19 +1,22 @@
 #include "camera.hh"
 
-Camera::Camera(int posx, int posy, int posz):x(posx), y(posy), z(posz)
+Camera::Camera(Point3 p):pt(p)
+{}
+
+Camera::Camera(int x, int y, int z):pt(Point3(x,y,z))
 {}
 
 int Camera::getX()
 {
-    return x;
+    return pt.getX();
 }
 
 int Camera::getY()
 {
-    return y;
+    return pt.getY();
 }
 
 int Camera::getZ()
 {
-    return z;
+    return pt.getZ();
 }
