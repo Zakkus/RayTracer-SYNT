@@ -17,3 +17,5 @@ int Ray::getDirZ()
 {
     return dirz;
 }
+
+

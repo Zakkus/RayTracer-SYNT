@@ -3,7 +3,6 @@
 
 #include "ray.hh"
 #include "camera.hh"
-#include <cmath>
 #include <climits>
 #include <SDL2/SDL.h>
 

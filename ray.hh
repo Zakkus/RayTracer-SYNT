@@ -1,6 +1,8 @@
 #ifndef RAY_HH
 #define RAY_HH
 
+#include <cmath>
+
 class Ray
 {
     public:

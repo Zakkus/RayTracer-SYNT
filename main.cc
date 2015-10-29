@@ -30,7 +30,9 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Camera l)
                 color = v[k]->getColor();
             }
             }
-            Ray ray2 = Ray(i - l.getX(), j - l.getY(), -l.getZ());
+            Point3 p = Point3((int)(c.getX() + ray.getDirX() * t), (int)(c.getY() +
+            ray.getDirY() * t), (int)(c.getZ() + ray.getDirZ() * t));
+            Ray ray2 = Ray(p.getX() - l.getX(), p.getY() - l.getY(), p.getZ() -l.getZ());
             obj->Calculate(l, ray2);
             double dist = obj->getT();
             for(int k =0; k < v.size(); k++)
