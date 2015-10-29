@@ -39,3 +39,8 @@ Uint32 Sphere::getColor()
 {
     return color;
 }
+
+Ray Sphere::getNormale(Point3 p)
+{
+    return Ray(p.getX() - xc, p.getY - yc, p.getZ() - zc);
+}

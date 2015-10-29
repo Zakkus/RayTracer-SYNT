@@ -10,7 +10,7 @@ class Sphere : public Primitive
         void Calculate(Camera cam, Ray ray);
         double getT();
         Uint32 getColor();
-        //Ray getNormale(
+        Ray getNormale(Point3 pt);
 
     private:
         double getDelta();
