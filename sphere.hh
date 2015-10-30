@@ -7,7 +7,7 @@ class Sphere : public Primitive
 {
     public:
         Sphere(int cx, int cy, int cz, int ra, Uint32 col);
-        void Calculate(Camera cam, Ray ray);
+        void Calculate(Point3 cam, Ray ray);
         double getT();
         Uint32 getColor();
         Ray getNormale(Point3 pt);

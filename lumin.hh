@@ -12,7 +12,12 @@ class Lumin
 {
     public:
         Lumin(Point3 p, Uint32 color);
- //       void Diffuse(SDL_Surface* s, vector<Primitive*> v);
+        Lumin(int x, int y, int z, Uint32 color);
+        int getX();
+        int getY();
+        int getZ();
+        Uint32 ChangeColor(Uint32 color, Ray r1, Ray r2);
+        Point3 getPt();
     private:
         Point3 pt;
         Uint32 color;

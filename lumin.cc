@@ -3,13 +3,8 @@
 Lumin::Lumin(Point3 p, Uint32 col): pt(p), color(col)
 {}
 
-/*void Lumin::Diffuse(SDL_Surface* s, int i, int j, Primitive* obj,
-vector<Primitive*> v)
-{
-    Ray r = Ray(i - x, j - y, -z);
-    obj->Calculate()
-    double t 
-}*/
+Lumin::Lumin(int x, int y, int z, Uint32 col):pt(Point3(x,y,z)), color(col)
+{}
 
 double getAngle(Ray r1, Ray r2)
 {
@@ -24,7 +19,27 @@ double getAngle(Ray r1, Ray r2)
     return acos(res);
 }
 
-Uint32 ChangeColor(Uint32 color, Ray r1, Ray r2)
+Uint32 Lumin::ChangeColor(Uint32 color, Ray r1, Ray r2)
 {
     return color * getAngle(r1,r2);
+}
+
+int Lumin::getX()
+{
+    return pt.getX();
+}
+
+int Lumin::getY()
+{
+    return pt.getY();
+}
+
+int Lumin::getZ()
+{
+    return pt.getZ();
+}
+
+Point3 Lumin::getPt()
+{
+    return pt;
 }

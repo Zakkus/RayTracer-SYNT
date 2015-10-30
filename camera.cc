@@ -20,3 +20,8 @@ int Camera::getZ()
 {
     return pt.getZ();
 }
+
+Point3 Camera::getPt()
+{
+    return pt;
+}

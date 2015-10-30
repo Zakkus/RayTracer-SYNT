@@ -11,7 +11,7 @@ void setPixel(SDL_Surface* dst, int x, int y, Uint32 color)
         *((Uint32*)(dst->pixels) + x + y * dst->w) = color;
 }
 
-void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Camera l)
+void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
 {
     for (int i = 0; i < s->w; i++)
         for (int j = 0; j < s->h; j++)
@@ -22,7 +22,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Camera l)
             Primitive* obj = v[0];
             for (int k = 0; k < v.size(); k++)
             {
-            v[k]->Calculate(c, ray);
+            v[k]->Calculate(c.getPt(), ray);
             if (t > v[k]->getT())
             {
                 obj = v[k];
@@ -34,16 +34,16 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Camera l)
             Point3 p = Point3((int)(c.getX() + ray.getDirX() * t), (int)(c.getY() +
             ray.getDirY() * t), (int)(c.getZ() + ray.getDirZ() * t));
             Ray ray2 = Ray(p.getX() - l.getX(), p.getY() - l.getY(), p.getZ() -l.getZ());
-            obj->Calculate(l, ray2);
+            obj->Calculate(l.getPt(), ray2);
             double dist = obj->getT();
             for(int k =0; k < v.size(); k++)
             {
                 if (v[k] == obj)
                     continue;
-                v[k]->Calculate(l, ray2);
+                v[k]->Calculate(l.getPt(), ray2);
                 if(dist > v[k]->getT())
                 {
-                    color = SDL_MapRGB(s->format, 0, 0, 0);
+                    color = l.ChangeColor(color, ray, ray2);
                     break;
                 }
             }
@@ -61,9 +61,9 @@ int main(int argc, char** argv)
     SDL_WINDOWPOS_UNDEFINED, 200, 200, SDL_WINDOW_SHOWN);
     SDL_Surface* screen = SDL_GetWindowSurface(w);
     Camera cam = Camera(100,100,100);
-    Camera lum = Camera(10,20,50);
     SDL_Surface* s = SDL_CreateRGBSurface(0,200,200,32,0,0,0,0);
     vector<Primitive*> p = vector<Primitive*>();
+    Lumin lum = Lumin(10,20,50, SDL_MapRGB(s->format,255, 255,255));
     Sphere d = Sphere(100,100, 0, 50, SDL_MapRGB(s->format, 0, 255, 0));
     p.push_back(&d);
     //Sphere d2 = Sphere(40,40, 0, 70, SDL_MapRGB(s->format, 0, 0, 255));

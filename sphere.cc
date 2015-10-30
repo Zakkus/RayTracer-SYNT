@@ -4,7 +4,7 @@ Sphere::Sphere(int cx, int cy, int cz, int ra, Uint32 col)
         : xc(cx), yc(cy), zc(cz), r(ra), color(col)
 {}
 
-void Sphere::Calculate(Camera cam, Ray ray)
+void Sphere::Calculate(Point3 cam, Ray ray)
 {
     a = pow(ray.getDirX(), 2) + pow(ray.getDirY(),2) + pow(ray.getDirZ(),2);
     b = 2 * (ray.getDirX() * (cam.getX() - xc) + ray.getDirY() * (cam.getY() -

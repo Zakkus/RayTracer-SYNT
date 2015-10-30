@@ -7,7 +7,7 @@ class Plane : public Primitive
 {
     public:
         Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, Uint32 col);
-        void Calculate(Camera cam, Ray r);
+        void Calculate(Point3 cam, Ray r);
         double getT();
         Uint32 getColor();
 

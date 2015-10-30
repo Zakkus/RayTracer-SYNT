@@ -11,6 +11,7 @@ class Camera
     int getX();
     int getY();
     int getZ();
+    Point3 getPt();
 
     private:
         Point3 pt;
