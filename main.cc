@@ -44,7 +44,8 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
                 //if(dist > v[k]->getT())
                 //{
                     color = l.ChangeColor(color, ray, ray2);
-                    break;
+                    printf("%d\n", color.g);
+                   // break;
                 //}
             }
             if (t < INT_MAX)
