@@ -2,6 +2,7 @@
 #include "plane.hh"
 #include <stdio.h>
 #include <vector>
+#include "lumin.hh"
 
 using namespace std;
 
