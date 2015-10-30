@@ -17,7 +17,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
         for (int j = 0; j < s->h; j++)
         {
             double t = INT_MAX;
-            Uint32 color;
+            SDL_Color color;
             Ray ray = Ray(i - c.getX(), j - c.getY(), -c.getZ());
             Primitive* obj = v[0];
             for (int k = 0; k < v.size(); k++)
@@ -48,7 +48,8 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
                 //}
             }
             if (t < INT_MAX)
-                setPixel(s, i, j, color);
+                setPixel(s, i, j, SDL_MapRGB(s->format, color.r, color.g,
+                color.b));
         }
 }
 
@@ -64,7 +65,11 @@ int main(int argc, char** argv)
     SDL_Surface* s = SDL_CreateRGBSurface(0,200,200,32,0,0,0,0);
     vector<Primitive*> p = vector<Primitive*>();
     Lumin lum = Lumin(10,20,50, SDL_MapRGB(s->format,255, 255,255));
-    Sphere d = Sphere(100,100, 0, 50, SDL_MapRGB(s->format, 0, 255, 0));
+    SDL_Color col;
+    col.r = 0;
+    col.g = 255;
+    col.b = 0;
+    Sphere d = Sphere(100,100, 0, 50, col);
     p.push_back(&d);
     //Sphere d2 = Sphere(40,40, 0, 70, SDL_MapRGB(s->format, 0, 0, 255));
    // p.push_back(&d2);

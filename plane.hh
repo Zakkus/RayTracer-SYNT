@@ -6,10 +6,10 @@
 class Plane : public Primitive
 {
     public:
-        Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, Uint32 col);
+        Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, SDL_Color col);
         void Calculate(Point3 cam, Ray r);
         double getT();
-        Uint32 getColor();
+        SDL_Color getColor();
 
     private:
     //Point
@@ -22,7 +22,7 @@ class Plane : public Primitive
         int c;
         int d;
         double t;
-        Uint32 color;
+        SDL_Color color;
 };
 
 #endif

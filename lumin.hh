@@ -16,7 +16,7 @@ class Lumin
         int getX();
         int getY();
         int getZ();
-        Uint32 ChangeColor(Uint32 color, Ray r1, Ray r2);
+        SDL_Color ChangeColor(SDL_Color color, Ray r1, Ray r2);
         Point3 getPt();
     private:
         Point3 pt;
