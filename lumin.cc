@@ -10,18 +10,10 @@ double getAngle(Ray r1, Ray r2)
 {
     r1.Normalize();
     r2.Normalize();
-    double norm1 = sqrt(pow(r1.getDirX(),2) + pow(r1.getDirY(),2) +
-    pow(r1.getDirZ(),2));
-    printf ("norm 1 = %f\n", norm1);
-    double norm2 = sqrt(pow(r2.getDirX(),2) + pow(r2.getDirY(),2) +
-    pow(r2.getDirZ(),2));
-    printf("norm 2 = %f\n", norm2);
     double res = r1.getDirX() * r2.getDirX() + r1.getDirY()* r2.getDirY() +
     r1.getDirZ() *
     r2.getDirZ();
     printf("numerateur = %f\n",res);
-    res = res / (norm1 + norm2);
-    printf("frac = %f\n",res);
     return acos(res);
 }
 
@@ -29,9 +21,9 @@ SDL_Color* Lumin::ChangeColor(SDL_Color* color, Ray r1, Ray r2)
 {
     double angle = getAngle(r1, r2);
     printf("%f \n", angle);
-    color->r = color->r * angle;
+    /*color->r = color->r * angle;
     color->g = color->g * angle;
-    color->b = color->b * angle;
+    color->b = color->b * angle;*/
     return color;
 }
 
