@@ -65,6 +65,7 @@ int main(int argc, char** argv)
     SDL_WINDOWPOS_UNDEFINED, 200, 200, SDL_WINDOW_SHOWN);
     SDL_Surface* screen = SDL_GetWindowSurface(w);
     Camera cam = Camera(100,100,100);
+    printf("%d\n", cam.getX());
     SDL_Surface* s = SDL_CreateRGBSurface(0,200,200,32,0,0,0,0);
     vector<Primitive*> p = vector<Primitive*>();
     Lumin lum = Lumin(10,20,50, SDL_MapRGB(s->format,255, 255,255));
@@ -78,7 +79,7 @@ int main(int argc, char** argv)
    // p.push_back(&d2);
  //   Plane pl = Plane(0, 1, 0, 4, 5, 6, 7, SDL_MapRGB(s->format, 255, 0, 0));
   //  p.push_back(&pl);
-    launch(s, cam, p, lum);
+    //launch(s, cam, p, lum);
     SDL_BlitSurface(s, NULL, screen, NULL);
     SDL_UpdateWindowSurface(w);
     SDL_Delay(1000);
