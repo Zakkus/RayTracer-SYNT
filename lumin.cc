@@ -21,9 +21,9 @@ SDL_Color* Lumin::ChangeColor(SDL_Color* color, Ray r1, Ray r2)
 {
     double angle = getAngle(r1, r2);
     printf("%f \n", angle);
-    /*color->r = color->r * angle;
+    color->r = color->r * angle;
     color->g = color->g * angle;
-    color->b = color->b * angle;*/
+    color->b = color->b * angle;
     return color;
 }
 
