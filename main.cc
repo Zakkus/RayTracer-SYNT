@@ -19,7 +19,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
             double t = INT_MAX;
             SDL_Color* color;
             Ray ray = Ray(i - c.getX(), j - c.getY(), -c.getZ());
-            Primitive* obj = v[0];
+            Primitive* obj = NULL;
             for (int k = 0; k < v.size(); k++)
             {
             v[k]->Calculate(c.getPt(), ray);
@@ -31,6 +31,8 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
                 color = v[k]->getColor();
             }
             }
+            if (!obj)
+                continue;
             Point3 p = Point3((int)(c.getX() + ray.getDirX() * t), (int)(c.getY() +
             ray.getDirY() * t), (int)(c.getZ() + ray.getDirZ() * t));
             Ray ray2 = Ray(p.getX() - l.getX(), p.getY() - l.getY(), p.getZ() -l.getZ());
