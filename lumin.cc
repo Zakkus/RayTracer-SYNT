@@ -19,11 +19,11 @@ double getAngle(Ray r1, Ray r2)
     return acos(res);
 }
 
-SDL_Color Lumin::ChangeColor(SDL_Color color, Ray r1, Ray r2)
+SDL_Color* Lumin::ChangeColor(SDL_Color* color, Ray r1, Ray r2)
 {
-    color.r = color.r * getAngle(r1, r2);
-    color.g = color.g * getAngle(r1,r2);
-    color.b = color.b * getAngle(r1, r2);
+    color->r = color->r * getAngle(r1, r2);
+    color->g = color->g * getAngle(r1,r2);
+    color->b = color->b * getAngle(r1, r2);
     return color;
 }
 

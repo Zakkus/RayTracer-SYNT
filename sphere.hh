@@ -9,7 +9,7 @@ class Sphere : public Primitive
         Sphere(int cx, int cy, int cz, int ra, SDL_Color col);
         void Calculate(Point3 cam, Ray ray);
         double getT();
-        SDL_Color getColor();
+        SDL_Color* getColor();
         Ray getNormale(Point3 pt);
 
     private:

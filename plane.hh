@@ -9,7 +9,7 @@ class Plane : public Primitive
         Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, SDL_Color col);
         void Calculate(Point3 cam, Ray r);
         double getT();
-        SDL_Color getColor();
+        SDL_Color* getColor();
 
     private:
     //Point

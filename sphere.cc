@@ -40,9 +40,9 @@ double Sphere::getT()
         return INT_MAX;
 }
 
-SDL_Color Sphere::getColor()
+SDL_Color* Sphere::getColor()
 {
-    return color;
+    return &color;
 }
 
 Ray Sphere::getNormale(Point3 p)

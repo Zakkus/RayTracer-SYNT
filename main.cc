@@ -17,7 +17,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
         for (int j = 0; j < s->h; j++)
         {
             double t = INT_MAX;
-            SDL_Color color;
+            SDL_Color* color;
             Ray ray = Ray(i - c.getX(), j - c.getY(), -c.getZ());
             Primitive* obj = v[0];
             for (int k = 0; k < v.size(); k++)
@@ -44,13 +44,13 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
                 //if(dist > v[k]->getT())
                 //{
                     color = l.ChangeColor(color, ray, ray2);
-                    printf("%d\n", color.g);
+                    printf("%d\n", color->g);
                    // break;
                 //}
             }
             if (t < INT_MAX)
-                setPixel(s, i, j, SDL_MapRGB(s->format, color.r, color.g,
-                color.b));
+                setPixel(s, i, j, SDL_MapRGB(s->format, color->r, color->g,
+                color->b));
         }
 }
 

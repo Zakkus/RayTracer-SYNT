@@ -23,7 +23,7 @@ double Plane::getT()
     return t;
 }
 
-SDL_Color Plane::getColor()
+SDL_Color* Plane::getColor()
 {
-    return color;
+    return &color;
 }
