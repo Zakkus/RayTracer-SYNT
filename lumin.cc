@@ -13,14 +13,14 @@ double getAngle(Ray r1, Ray r2)
     double res = r1.getDirX() * r2.getDirX() + r1.getDirY()* r2.getDirY() +
     r1.getDirZ() *
     r2.getDirZ();
-    printf("numerateur = %f\n",res);
+ //   printf("numerateur = %f\n",res);
     return acos(res);
 }
 
 SDL_Color* Lumin::ChangeColor(SDL_Color* color, Ray r1, Ray r2)
 {
-    double angle = getAngle(r1, r2);
-    printf("%f \n", angle);
+    double angle = getAngle(r1, r2)/ M_PI;
+ //   printf("%f \n", angle);
     color->r = color->r * angle;
     color->g = color->g * angle;
     color->b = color->b * angle;

@@ -46,7 +46,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
                 //if(dist > v[k]->getT())
                 //{
                     color = l.ChangeColor(color, ray, ray2);
-                    printf("%d\n", color->g);
+             //       printf("%d\n", color->g);
                    // break;
                 //}
             }
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
     Camera cam = Camera(100,100,100);
     SDL_Surface* s = SDL_CreateRGBSurface(0,200,200,32,0,0,0,0);
     vector<Primitive*> p = vector<Primitive*>();
-    Lumin lum = Lumin(100,100, -100, SDL_MapRGB(s->format,255, 255,255));
+    Lumin lum = Lumin(100,100, 100, SDL_MapRGB(s->format,255, 255,255));
     SDL_Color col;
     col.r = 0;
     col.g = 255;
