@@ -38,14 +38,14 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
             double dist = obj->getT();
             for(int k =0; k < v.size(); k++)
             {
-                if (v[k] == obj)
-                    continue;
+                //if (v[k] == obj)
+                  //  continue;
                 v[k]->Calculate(l.getPt(), ray2);
-                if(dist > v[k]->getT())
-                {
+                //if(dist > v[k]->getT())
+                //{
                     color = l.ChangeColor(color, ray, ray2);
                     break;
-                }
+                //}
             }
             if (t < INT_MAX)
                 setPixel(s, i, j, color);
