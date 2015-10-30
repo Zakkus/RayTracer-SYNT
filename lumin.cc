@@ -8,6 +8,8 @@ Lumin::Lumin(int x, int y, int z, Uint32 col):pt(Point3(x,y,z)), color(col)
 
 double getAngle(Ray r1, Ray r2)
 {
+    r1.Normalize();
+    r2.Normalize();
     double norm1 = sqrt(pow(r1.getDirX(),2) + pow(r1.getDirY(),2) +
     pow(r1.getDirZ(),2));
     printf ("norm 1 = %f\n", norm1);

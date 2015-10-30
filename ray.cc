@@ -1,21 +1,28 @@
 #include "ray.hh"
 
-Ray::Ray(int x, int y, int z):dirx(x), diry(y), dirz(z)
+Ray::Ray(double x, double y, double z):dirx(x), diry(y), dirz(z)
 {}
 
-int Ray::getDirX()
+double Ray::getDirX()
 {
     return dirx;
 }
 
-int Ray::getDirY()
+double Ray::getDirY()
 {
     return diry;
 }
 
-int Ray::getDirZ()
+double Ray::getDirZ()
 {
     return dirz;
 }
 
+void Ray::Normalize()
+{
+    double norm = sqrt(pow(dirx,2) + pow(diry,2) + pow(dirz,2));
+    dirx = dirx / norm;
+    diry = diry / norm;
+    dirz = dirz / norm;
 
+}

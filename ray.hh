@@ -6,15 +6,16 @@
 class Ray
 {
     public:
-    Ray(int x, int y, int z);
-    int getDirX();
-    int getDirY();
-    int getDirZ();
+    Ray(double x, double y, double z);
+    double getDirX();
+    double getDirY();
+    double getDirZ();
+    void Normalize();
 
     private:
-    int dirx;
-    int diry;
-    int dirz;
+    double dirx;
+    double diry;
+    double dirz;
 };
 
 #endif
