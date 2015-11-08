@@ -1,3 +1,4 @@
+#include "parser.hh"
 #include "sphere.hh"
 #include "plane.hh"
 #include <stdio.h>
@@ -84,5 +85,8 @@ int main(int argc, char** argv)
     SDL_Delay(1000);
     SDL_DestroyWindow(w);
     SDL_Quit();
+
+    //vector<Primitive*> p = parseScene(argv);
+
     return 0;
 }
