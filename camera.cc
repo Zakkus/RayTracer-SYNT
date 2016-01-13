@@ -1,9 +1,9 @@
 #include "camera.hh"
 
-Camera::Camera(Point3 p):pt(p)
+Camera::Camera(Point3 p, Ray uu, Ray vv):pt(p), u(uu), v(vv)
 {}
 
-Camera::Camera(int x, int y, int z):pt(Point3(x,y,z))
+Camera::Camera(int x, int y, int z, Ray uu, Ray vv):pt(Point3(x,y,z)), u(uu), v(vv)
 {}
 
 int Camera::getX()
