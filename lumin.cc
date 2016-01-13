@@ -19,11 +19,13 @@ double getAngle(Ray r1, Ray r2)
 
 SDL_Color* Lumin::ChangeColor(SDL_Color* color, Ray r1, Ray r2)
 {
-    double angle = getAngle(r1, r2)/ M_PI;
- //   printf("%f \n", angle);
-    color->r = color->r * angle;
-    color->g = color->g * angle;
-    color->b = color->b * angle;
+    double angle = getAngle(r1, r2);
+ 	//printf("%d \n", color->g);
+	if (angle <= M_PI/2 && angle >= -M_PI/2)
+		angle = 0;
+    color->r = color->r * (angle / M_PI);
+    color->g = 255 * (angle / M_PI);
+    color->b = color->b * (angle / M_PI);
     return color;
 }
 

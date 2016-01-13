@@ -29,15 +29,15 @@ double Sphere::getT()
         return -b / (2 * a);
     else if (getDelta() > 0)
     {
-        double t1 = (-b + getDelta()) / (2 * a);
-        double t2 = (-b - getDelta()) / (2 * a);
+        double t1 = (-b + sqrt(getDelta())) / (2 * a);
+        double t2 = (-b - sqrt(getDelta())) / (2 * a);
         if (t1 > t2)
             return t2;
         else
             return t1;
     }
     else
-        return INT_MAX;
+        return	3000;
 }
 
 SDL_Color* Sphere::getColor()

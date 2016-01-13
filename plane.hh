@@ -10,6 +10,7 @@ class Plane : public Primitive
         void Calculate(Point3 cam, Ray r);
         double getT();
         SDL_Color* getColor();
+		Ray getNormale(Point3 p);
 
     private:
     //Point
