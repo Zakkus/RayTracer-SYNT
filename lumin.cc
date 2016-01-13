@@ -17,16 +17,17 @@ double getAngle(Ray r1, Ray r2)
     return acos(res);
 }
 
-SDL_Color* Lumin::ChangeColor(SDL_Color* color, Ray r1, Ray r2)
+SDL_Color* Lumin::ChangeColor(SDL_Color* c, Ray r1, Ray r2)
 {
     double angle = getAngle(r1, r2);
- 	//printf("%d \n", color->g);
-	if (angle <= M_PI/2 && angle >= -M_PI/2)
-		angle = 0;
-    color->r = color->r * (angle / M_PI);
-    color->g = 255 * (angle / M_PI);
-    color->b = color->b * (angle / M_PI);
-    return color;
+ 	printf("%d \n", c->g);
+	SDL_Color col;
+	//if (angle <= M_PI/2 && angle >= -M_PI/2)
+	//	angle = 0;
+    col.r = c->r * (angle / M_PI);
+    col.g = c->g * (angle / M_PI);
+    col.b = c->b * (angle / M_PI);
+    return &col;
 }
 
 int Lumin::getX()

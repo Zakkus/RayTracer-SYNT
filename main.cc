@@ -30,7 +30,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
                 t = v[k]->getT();
 	//			printf("%f\n", t);
                 color = v[k]->getColor();
-                //printf("%d\n", color->g);
+ //               printf("%d\n", color->g);
             }
             }
             if (!obj)
@@ -46,18 +46,22 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
 			Ray ray3 = obj->getNormale(p);
 			//printf("%f\n", dist);
 			//if (dist > 0.9)
-            for(int k =0; k < v.size(); k++)
+			
+            color = l.ChangeColor(color, ray3, ray2);
+            /*for(int k =0; k < v.size(); k++)
             {
-                //if (v[k] == obj)
-                  //  continue;
- //               v[k]->Calculate(l.getPt(), ray2);
-            //    if(dist > v[k]->getT())
-              //  {
-                    color = l.ChangeColor(color, ray3, ray2);
+                if (v[k] == obj)
+                    continue;
+                v[k]->Calculate(l.getPt(), ray2);
+                if(dist > v[k]->getT())
+                {
+                	color->g = 0;
+					color->b = 0;
+					color->r = 0;
                     //printf("%d\n", color->g);
                    // break;
-               // }
-            }
+                }
+            }*/
 	/*		else
 				{
 				color->r = 0;
@@ -68,6 +72,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, Lumin l)
             if (t < 3000)
                 setPixel(s, i, j, SDL_MapRGB(s->format, color->r, color->g,
                 color->b));
+	//		free(color);
         }
 }
 
@@ -82,17 +87,22 @@ int main(int argc, char** argv)
     Camera cam = Camera(100,100,100);
     SDL_Surface* s = SDL_CreateRGBSurface(0,200,200,32,0,0,0,0);
     vector<Primitive*> p = vector<Primitive*>();
-    Lumin lum = Lumin(100,0, -100, SDL_MapRGB(s->format,255, 255,255));
+    Lumin lum = Lumin(100,-100, -100, SDL_MapRGB(s->format,255, 255,255));
     SDL_Color col;
     col.r = 0;
     col.g = 255;
     col.b = 0;
+	SDL_Color col2;
+    col2.r = 0;
+    col2.g = 0;
+    col2.b = 255;
+    
     Sphere d = Sphere(100,100, -100, 50, col);
     p.push_back(&d);
     //Sphere d2 = Sphere(40,40, 0, 70, SDL_MapRGB(s->format, 0, 0, 255));
    // p.push_back(&d2);
- //   Plane pl = Plane(0, 1, 0, 4, 5, 6, 7, SDL_MapRGB(s->format, 255, 0, 0));
-  //  p.push_back(&pl);
+  //  Plane pl = Plane(10, 2, -600, 4, 5, 6, 7, col2);
+   // p.push_back(&pl);
     launch(s, cam, p, lum);
     SDL_BlitSurface(s, NULL, screen, NULL);
     SDL_UpdateWindowSurface(w);

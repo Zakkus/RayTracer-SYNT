@@ -30,5 +30,5 @@ SDL_Color* Plane::getColor()
 
 Ray Plane::getNormale(Point3 p)
 {
-return Ray(0,0,0);
+return Ray(a,b,c);
 }
