@@ -5,4 +5,6 @@
 
 double getAngle(Ray r1, Ray r2);
 
+Ray compute_reflection_vect(Ray ray);
+
 #endif

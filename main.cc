@@ -8,22 +8,7 @@
 
 using namespace std;
 
-Ray compute_reflection_vect(Ray ray)
-{
-    double scalar =
-       (pow(sqrt(pow(- ray.getDirX(), 2) +
-                 pow(- ray.getDirY(), 2) +
-                 pow(- ray.getDirZ(), 2)), 2 )
-      + 3                               // distance au point 1,1,1
-      - pow(sqrt(pow(- ray.getDirX() - 1, 2) +
-                 pow(- ray.getDirY() - 1, 2) +
-                 pow(- ray.getDirZ() - 1, 2)), 2)) / 2;
 
-    double refX = ray.getDirX() + 2 * scalar;
-    double refY = ray.getDirY() + 2 * scalar;
-    double refZ = ray.getDirZ() + 2 * scalar;
-    return Ray(refX, refY, refZ);
-}
 
 void setPixel(SDL_Surface* dst, int x, int y, Uint32 color)
 {
@@ -78,9 +63,9 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, vector<Lumin*> li)
 					c.r = 0;
                 }
             }
-			cl.r += c.r;
-			cl.g += c.g;
-			cl.b += c.b;
+			cl.r += c.r/2;
+			cl.g += c.g/2;
+			cl.b += c.b/2;
 			}
         if (t < 3000)
                 setPixel(s, i, j, SDL_MapRGB(s->format, cl.r, cl.g,
@@ -116,9 +101,9 @@ int main(int argc, char** argv)
     col.g = 255;
     col.b = 0;
     SDL_Color col2;
-    col2.r = 0;
+    col2.r = 255;
     col2.g = 0;
-    col2.b = 255;
+    col2.b = 0;
 
 
     Sphere d = Sphere(100,100, -100, 10, col);

@@ -14,9 +14,9 @@ SDL_Color Lumin::ChangeColor(SDL_Color* c, Ray r1, Ray r2)
 		angle = 0;
 	else
 		angle = 1 - angle;
-    col.r = (c->r/255) * color.r * angle;
-    col.g = (c->g/255)* color.g * angle;
-    col.b = (c->b/255) * color.b * angle;
+    col.r = c->r * color.r * angle / 255;
+    col.g = c->g * color.g * angle / 255;
+    col.b = c->b * color.b * angle / 255;
     return col;
 }
 
