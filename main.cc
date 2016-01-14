@@ -103,8 +103,14 @@ int main(int argc, char** argv)
     SDL_Surface* s = SDL_CreateRGBSurface(0,200,200,32,0,0,0,0);
     vector<Primitive*> p = vector<Primitive*>();
 	vector<Lumin*> li = vector<Lumin*>();
-    Lumin lum = Lumin(120, 100, -75, SDL_MapRGB(s->format,255, 255,255));
+	SDL_Color wh;
+	wh.r = 255;
+	wh.g = 255;
+	wh.b = 255;
+    Lumin lum = Lumin(120, 100, -75, wh);
 	li.push_back(&lum);
+    Lumin lums = Lumin(120, 100, -50, wh);
+	li.push_back(&lums);
     SDL_Color col;
     col.r = 0;
     col.g = 255;

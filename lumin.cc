@@ -1,9 +1,9 @@
 #include "lumin.hh"
 
-Lumin::Lumin(Point3 p, Uint32 col): pt(p), color(col)
+Lumin::Lumin(Point3 p, SDL_Color col): pt(p), color(col)
 {}
 
-Lumin::Lumin(int x, int y, int z, Uint32 col):pt(Point3(x,y,z)), color(col)
+Lumin::Lumin(int x, int y, int z, SDL_Color col):pt(Point3(x,y,z)), color(col)
 {}
 
 SDL_Color Lumin::ChangeColor(SDL_Color* c, Ray r1, Ray r2)

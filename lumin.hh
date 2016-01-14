@@ -9,8 +9,8 @@ using namespace std;
 class Lumin: public Photon
 {
     public:
-        Lumin(Point3 p, Uint32 color);
-        Lumin(int x, int y, int z, Uint32 color);
+        Lumin(Point3 p, SDL_Color color);
+        Lumin(int x, int y, int z, SDL_Color color);
         int getX();
         int getY();
         int getZ();
@@ -19,7 +19,7 @@ class Lumin: public Photon
         Point3 getPt();
     private:
         Point3 pt;
-        Uint32 color;
+        SDL_Color color;
 };
 
 #endif
