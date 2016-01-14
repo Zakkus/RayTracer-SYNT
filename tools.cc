@@ -8,5 +8,5 @@ double getAngle(Ray r1, Ray r2)
     r1.getDirZ() *
     r2.getDirZ();
  //   printf("numerateur = %f\n",res);
-    return acos(res);
+    return res;
 }
