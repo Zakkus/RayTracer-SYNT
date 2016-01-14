@@ -12,6 +12,9 @@ class Camera
     int getX();
     int getY();
     int getZ();
+	Ray getDir();
+	Ray getLeft();
+	Ray getUp();
     Point3 getPt();
 
     private:

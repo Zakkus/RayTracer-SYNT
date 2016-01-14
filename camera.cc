@@ -25,3 +25,21 @@ Point3 Camera::getPt()
 {
     return pt;
 }
+
+Ray Camera::getDir()
+{
+	double x = u.getDirY() * v.getDirZ() - v.getDirY() * u.getDirZ();
+	double y = u.getDirZ() * v.getDirX() - v.getDirZ() * u.getDirX();
+	double z = u.getDirX() * v.getDirY() - v.getDirX() * u.getDirY();
+	return Ray(x,y,z);
+}
+
+Ray Camera::getLeft()
+{
+	return u;
+}
+
+Ray Camera::getUp()
+{
+	return v;
+}
