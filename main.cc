@@ -1,10 +1,7 @@
 #include "parser.hh"
-#include "sphere.hh"
-#include "plane.hh"
 #include <stdio.h>
-#include <vector>
-#include "lumin.hh"
 #include "diff.hh"
+#include "trace.hh"
 
 using namespace std;
 
@@ -18,15 +15,14 @@ void setPixel(SDL_Surface* dst, int x, int y, Uint32 color)
 void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, vector<Lumin*> li)
 {
 	Point3 init = getUpLeft(c, s->w, s->h, 100);
-	printf("%d, %d, %d\n", init.getX(), init.getY(), init.getZ());
     for (int i = 0; i < s->w; i++)
         for (int j = 0; j < s->h; j++)
         {
 			Point3 where = getPoint(c, init, s->w, s->h, s->w, s->h, i, j);
-            double t = 3000;
-            SDL_Color* color;
+ //           double t = 3000;
+            //SDL_Color* color;
             Ray ray = Ray(where.getX() - c.getX(), where.getY() - c.getY(), where.getZ() -c.getZ());
-            Primitive* obj = NULL;
+            /*Primitive* obj = NULL;
             for (int k = 0; k < v.size(); k++)
             {
             v[k]->Calculate(c.getPt(), ray);
@@ -49,6 +45,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, vector<Lumin*> li)
 			{
 			Lumin l = *(li[dz]);
             Ray ray2 = Ray(p.getX() - l.getX(), p.getY() - l.getY(), p.getZ() -l.getZ());
+			ray2.Normalize();
 			obj->Calculate(l.getPt(), ray2);
             double dist = obj->getT();
 			Ray ray3 = obj->getNormale(p);
@@ -66,11 +63,12 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, vector<Lumin*> li)
 					c.r = 0;
                 }
             }
-			cl.r += c.r/li.size();
-			cl.g += c.g/li.size();
-			cl.b += c.b/li.size();
-			}
-        if (t < 3000)
+			cl.r += c.r/(li.size() * 250 / dist);
+			cl.g += c.g/(li.size() * 250 / dist);
+			cl.b += c.b/(li.size() * 250 / dist);
+			}*/
+			SDL_Color cl = Send(ray, c.getPt(), v, li);
+ //       if (t < 3000)
                 setPixel(s, i, j, SDL_MapRGB(s->format, cl.r, cl.g,
                 cl.b));
 
@@ -111,9 +109,9 @@ int main(int argc, char** argv)
     col2.b = 0;
 
 
-    Sphere d = Sphere(480, 50, 500, 10, col);
+    Sphere d = Sphere(0, 0, 150, 10, col);
     p.push_back(&d);
-    Sphere d2 = Sphere(150,200, 200, 100, col2);
+    Sphere d2 = Sphere(0,0, 200, 25, col2);
     p.push_back(&d2);
     Plane pl = Plane(0, 0, 5000, 0, 0, -1, 5, col2);
     p.push_back(&pl);
