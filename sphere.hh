@@ -6,11 +6,12 @@
 class Sphere : public Primitive
 {
     public:
-        Sphere(int cx, int cy, int cz, int ra, SDL_Color col);
+        Sphere(int cx, int cy, int cz, int ra, int refl, SDL_Color col);
         void Calculate(Point3 cam, Ray ray);
         double getT();
         SDL_Color* getColor();
         Ray getNormale(Point3 pt);
+		int getReflect();
 
     private:
         double getDelta();
@@ -18,6 +19,7 @@ class Sphere : public Primitive
         int yc;
         int zc;
         int r;
+		int reflect;
         double a;
         double b;
         double c;

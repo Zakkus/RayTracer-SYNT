@@ -1,7 +1,7 @@
 #include "plane.hh"
 
-Plane::Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, SDL_Color col)
-        : x(xi), y(yi), z(zi), a(ai), b(bi), c(ci), d(di)
+Plane::Plane(int xi, int yi, int zi, int ai, int bi, int ci, int di, int r, SDL_Color col)
+        : x(xi), y(yi), z(zi), a(ai), b(bi), c(ci), d(di), reflect(r)
 {    
     color.r = col.r;
     color.g = col.g;
@@ -31,4 +31,9 @@ SDL_Color* Plane::getColor()
 Ray Plane::getNormale(Point3 p)
 {
 return Ray(a,b,c);
+}
+
+int Plane::getReflect()
+{
+	return reflect;
 }

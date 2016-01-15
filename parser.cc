@@ -76,7 +76,7 @@ Sphere* getSphere(char* st)
     normal = strtok(NULL, " ");
     n3 = atoi(normal);
 
-    return new Sphere(cx, cy, cz, r, c);
+    return new Sphere(cx, cy, cz, r, 1, c);
 }
 
 Plane* getPlane(char* st)
@@ -131,5 +131,5 @@ Plane* getPlane(char* st)
     n3 = atoi(normal);
 
 
-    return new Plane(xi, yi, zi, ai, bi, ci, di, c);
+    return new Plane(xi, yi, zi, ai, bi, ci, di, 1, c);
 }

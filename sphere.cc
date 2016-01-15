@@ -1,7 +1,7 @@
 #include "sphere.hh"
 
-Sphere::Sphere(int cx, int cy, int cz, int ra, SDL_Color col)
-        : xc(cx), yc(cy), zc(cz), r(ra)
+Sphere::Sphere(int cx, int cy, int cz, int ra, int refl, SDL_Color col)
+        : xc(cx), yc(cy), zc(cz), r(ra), reflect(refl)
 {
     color.r = col.r;
     color.g = col.g;
@@ -37,7 +37,7 @@ double Sphere::getT()
             return t1;
     }
     else
-        return	3000;
+        return	HUGE_VAL;
 }
 
 SDL_Color* Sphere::getColor()
@@ -48,4 +48,9 @@ SDL_Color* Sphere::getColor()
 Ray Sphere::getNormale(Point3 p)
 {
     return Ray(p.getX() - xc, p.getY() - yc, p.getZ() - zc);
+}
+
+int Sphere::getReflect()
+{
+	return reflect;
 }

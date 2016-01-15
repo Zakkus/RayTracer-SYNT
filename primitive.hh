@@ -14,6 +14,7 @@ class Primitive
         virtual double getT() = 0;
         virtual SDL_Color* getColor() = 0;
 		virtual Ray getNormale(Point3 p) = 0;
+		virtual int getReflect() = 0;
 };
 
 #endif

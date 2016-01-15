@@ -2,7 +2,7 @@
 
 SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int ref)
 {
-	double t = 3000;
+	double t = HUGE_VAL;
 	SDL_Color* color;
 	Primitive* obj = NULL;
 	for (int k = 0; k < v.size(); k++)
@@ -27,19 +27,19 @@ SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int r
 	{
 		Lumin l = *(li[dz]);
 		Ray ray2 = Ray(p.getX() - l.getX(), p.getY() - l.getY(), p.getZ() -l.getZ());
-	//	ray2.Normalize();
+		ray2.Normalize();
 		obj->Calculate(l.getPt(), ray2);
 		double dist = obj->getT();
 		Ray ray3 = obj->getNormale(p);
-
+		ray3.Normalize();
 		SDL_Color c = l.ChangeColor(color, ray3, ray2);
-		if (ref < 1)
+		if (ref < 1 && obj->getReflect() == 1)
 		{
-		Ray reflect = compute_reflection_vect(ray2);
+		Ray reflect = compute_reflection_vect(ray2, ray3);
 		SDL_Color clor = Send(reflect, p, v, li, 1);
-		c.r = c.r / 2 + clor.r / 2;
-		c.g = c.g / 2 + clor.g / 2;
-		c.b = c.b / 2 + clor.b / 2;
+		c.r = c.r/2 + clor.r/2;
+		c.g = c.g/2 + clor.g/2;
+		c.b = c.b/2 + clor.b/2;
 		}
 		for(int k =0; k < v.size(); k++)
 		{

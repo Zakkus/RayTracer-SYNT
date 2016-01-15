@@ -4,7 +4,7 @@
 #include "camera.hh"
 double getAngle(Ray r1, Ray r2);
 
-Ray compute_reflection_vect(Ray ray);
+Ray compute_reflection_vect(Ray r1, Ray r2);
 
 Point3 getUpLeft(Camera c, int w, int h, int d);
 
