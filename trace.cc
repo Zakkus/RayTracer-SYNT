@@ -35,7 +35,8 @@ SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int r
 		SDL_Color c = l.ChangeColor(color, ray3, ray2);
 		if (ref < 1 && obj->getReflect() == 1)
 		{
-		Ray reflect = compute_reflection_vect(ray2, ray3);
+		Ray re = Ray(- ray2.getDirX(), - ray2.getDirY(), -ray2.getDirZ());
+		Ray reflect = compute_reflection_vect(re, ray3);
 		SDL_Color clor = Send(reflect, p, v, li, 1);
 		c.r = c.r/2 + clor.r/2;
 		c.g = c.g/2 + clor.g/2;

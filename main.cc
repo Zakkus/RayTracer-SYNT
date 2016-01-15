@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 	wh.b = 255;
 	Lumin lum = Lumin(120, 100, -20, wh);
 	//li.push_back(&lum);
-	Lumin lums = Lumin(100, 0, -50, wh);
+	Lumin lums = Lumin(200, 0, -50, wh);
 	li.push_back(&lums);
 	SDL_Color col;
 	col.r = 100;
