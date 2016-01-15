@@ -1,6 +1,6 @@
 #include "trace.hh"
 
-SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li)
+SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int ref)
 {
 	double t = 3000;
 	SDL_Color* color;
@@ -33,12 +33,14 @@ SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li)
 		Ray ray3 = obj->getNormale(p);
 
 		SDL_Color c = l.ChangeColor(color, ray3, ray2);
-		//Reflection?
+		if (ref < 1)
+		{
 		Ray reflect = compute_reflection_vect(ray2);
-	//	SDL_Color clor = Send(reflect, p, v, li);
-		/*c.r = c.r / 2 + clor.r / 2;
+		SDL_Color clor = Send(reflect, p, v, li, 1);
+		c.r = c.r / 2 + clor.r / 2;
 		c.g = c.g / 2 + clor.g / 2;
-		c.b = c.b / 2 + clor.b / 2;*/
+		c.b = c.b / 2 + clor.b / 2;
+		}
 		for(int k =0; k < v.size(); k++)
 		{
 			if (v[k] == obj)

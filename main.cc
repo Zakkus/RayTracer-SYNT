@@ -21,7 +21,7 @@ void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, vector<Lumin*> li)
 			Point3 where = getPoint(c, init, s->w, s->h, s->w, s->h, i, j);
 			Ray ray = Ray(where.getX() - c.getX(), where.getY() - c.getY(), where.getZ() -c.getZ());
 
-			SDL_Color cl = Send(ray, c.getPt(), v, li);
+			SDL_Color cl = Send(ray, c.getPt(), v, li, 0);
 			setPixel(s, i, j, SDL_MapRGB(s->format, cl.r, cl.g,
 						cl.b));
 
