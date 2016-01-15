@@ -30,9 +30,9 @@ Ray compute_reflection_vect(Ray ray)
 
 Point3 getUpLeft(Camera c, int w, int h, int d)
 {
-	int x = c.getX() + c.getDir().getDirX() * d + c.getUp().getDirX() * h/2.0 + c.getLeft().getDirX() * w/2.0;
-	int y = c.getY() + c.getDir().getDirY() * d + c.getUp().getDirY() * h/2.0 + c.getLeft().getDirY() * w/2.0;
-	int z = c.getZ() + c.getDir().getDirZ() * d + c.getUp().getDirZ() * h/2.0 + c.getLeft().getDirZ() * w/2.0;
+	int x = c.getX() + c.getDir().getDirX() * d + c.getUp().getDirX() * h/2.0 - c.getLeft().getDirX() * w/2.0;
+	int y = c.getY() + c.getDir().getDirY() * d + c.getUp().getDirY() * h/2.0 - c.getLeft().getDirY() * w/2.0;
+	int z = c.getZ() + c.getDir().getDirZ() * d + c.getUp().getDirZ() * h/2.0 - c.getLeft().getDirZ() * w/2.0;
 	return Point3(x,y,z);
 }
 
