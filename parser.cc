@@ -33,9 +33,10 @@ void getObject(char* st, std::vector<Primitive *> &prims, std::vector<Lumin *> &
 
 Sphere* getSphere(char* st)
 {
-    SDL_Color c, lc;
+    SDL_Color c;
     int cx, cy, cz, r, reflect;
     int l1, l2, l3, n1, n2, n3;
+    Uint8 cr, cg, cb;
     std::vector<char*> parsed;
 
     while (st != NULL)

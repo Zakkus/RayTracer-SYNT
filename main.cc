@@ -104,9 +104,6 @@ int main(int argc, char** argv)
     Ray u = Ray(1, 0, 0);
     Ray v = Ray(0,1,0);
     Camera cam = Camera(100,100,100,u,v);
-    SDL_Surface* s = SDL_CreateRGBSurface(0,200,200,32,0,0,0,0);
-    vector<Primitive*> p = vector<Primitive*>();
-    Lumin lum = Lumin(150, 100, -25, SDL_MapRGB(s->format,255, 255,255));
     SDL_Color col;
     col.r = 0;
     col.g = 255;
@@ -117,13 +114,8 @@ int main(int argc, char** argv)
     col2.b = 255;
 
 
-    Sphere d = Sphere(100,100, -100, 10, col);
-    p.push_back(&d);
-    Sphere d2 = Sphere(100,100, -300, 100, col2);
-    p.push_back(&d2);
     //   Plane pl = Plane(10, 2, -600, 4, -1, 6, 7, col2);
     // p.push_back(&pl);
-    launch(s, cam, p, lum);
  /*   SDL_BlitSurface(s, NULL, screen, NULL);
     SDL_UpdateWindowSurface(w);
     SDL_Delay(10000);
@@ -131,9 +123,12 @@ int main(int argc, char** argv)
     SDL_Quit();*/
 
 
-    vector<Primitive*> prims = new vector<Primitive*>();
-    vector<Lumin*> lumis = new vector<Lumin*>();
+    std::vector<Primitive*> prims = std::vector<Primitive*>();
+    std::vector<Lumin*> lumis = std::vector<Lumin*>();
     parseScene(argv, prims, lumis);
+
+    int truc = prims[0]->getColor()->g;
+    std::cout << truc << std::endl;
 
     return 0;
 }
