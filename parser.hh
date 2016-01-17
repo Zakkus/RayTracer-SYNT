@@ -10,10 +10,12 @@
 # include "primitive.hh"
 # include "sphere.hh"
 # include "plane.hh"
+# include "lumin.hh"
 
-Primitive* getPrimitive(char* st);
+void parseScene(char** argv, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis);
+void getObject(char* st, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis);
 Sphere* getSphere(char* st);
 Plane* getPlane(char* st);
-std::vector<Primitive *> parseScene(char** argv);
+Lumin* getLumin(char* st);
 
 #endif /* !PARSER_HH */

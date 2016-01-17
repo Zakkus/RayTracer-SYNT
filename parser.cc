@@ -1,8 +1,7 @@
 #include "parser.hh"
 
-std::vector<Primitive *> parseScene(char** argv)
+void parseScene(char** argv, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
 {
-    std::vector<Primitive*> p;
     std::string st;
     std::ifstream fs(argv[1]);
     int n;
@@ -10,32 +9,32 @@ std::vector<Primitive *> parseScene(char** argv)
     getline(fs,st); 
     std::cout << st << std::endl;
 
-    n = 1;
+    n = atoi(st.c_str());
     while (n > 0)
     {
         getline(fs, st);
         std::cout << st << std::endl;
-        p.push_back(getPrimitive(&st[0]));
+        getObject(&st[0], prims, lumis);
         n--;
     }
-
-    return p;
 }
 
-Primitive* getPrimitive(char* st)
+void getObject(char* st, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
 {
     char* new_s = strtok (st,",");
 
     if (strcmp(new_s, "sphere") == 0)
-        return getSphere(new_s);
+        prims.push_back(getSphere(new_s));
     if (strcmp(new_s, "plane") == 0)
-        return getPlane(new_s);
+        prims.push_back(getPlane(new_s));
+    if (strcmp(new_s, "light") == 0)
+        lumis.push_back(getLumin(new_s));
 }
 
 Sphere* getSphere(char* st)
 {
-    SDL_Color c;
-    int cx, cy, cz, r;
+    SDL_Color c, lc;
+    int cx, cy, cz, r, reflect;
     int l1, l2, l3, n1, n2, n3;
     std::vector<char*> parsed;
 
@@ -54,20 +53,14 @@ Sphere* getSphere(char* st)
     cz = atoi(pos);
 
     r = atoi(parsed[1]);
+    reflect = atoi(parsed[2]);
 
-    char* color = strtok(parsed[2], " ");
+    char* color = strtok(parsed[3], " ");
     c.r = atoi(color);
     color = strtok(NULL, " ");
     c.g = atoi(color);
     color = strtok(NULL, " ");
     c.b = atoi(color);
-
-    char* lumin = strtok(parsed[3], " ");
-    l1 = atoi(lumin);
-    lumin = strtok(NULL, " ");
-    l2 = atoi(lumin);
-    lumin = strtok(NULL, " ");
-    l3 = atoi(lumin);
 
     char* normal = strtok(parsed[4], " ");
     n1 = atoi(normal);
@@ -76,14 +69,14 @@ Sphere* getSphere(char* st)
     normal = strtok(NULL, " ");
     n3 = atoi(normal);
 
-    return new Sphere(cx, cy, cz, r, 1, c);
+    return new Sphere(cx, cy, cz, r, reflect, c);
 }
 
 Plane* getPlane(char* st)
 {
-    SDL_Color c;
+    SDL_Color c, lc;
     int xi, yi, zi, ai, bi, ci, di;
-    int l1, l2, l3, n1, n2, n3;
+    int l1, l2, l3, n1, n2, n3, reflect;
     std::vector<char*> parsed;
 
     while (st != NULL)
@@ -109,19 +102,14 @@ Plane* getPlane(char* st)
     a = strtok(NULL, " ");
     di = atoi(a);
 
-    char* color = strtok(parsed[2], " ");
+    reflect = atoi(parsed[2]);
+
+    char* color = strtok(parsed[3], " ");
     c.r = atoi(color);
     color = strtok(NULL, " ");
     c.g = atoi(color);
     color = strtok(NULL, " ");
     c.b = atoi(color);
-
-    char* lumin = strtok(parsed[3], " ");
-    l1 = atoi(lumin);
-    lumin = strtok(NULL, " ");
-    l2 = atoi(lumin);
-    lumin = strtok(NULL, " ");
-    l3 = atoi(lumin);
 
     char* normal = strtok(parsed[4], " ");
     n1 = atoi(normal);
@@ -131,5 +119,35 @@ Plane* getPlane(char* st)
     n3 = atoi(normal);
 
 
-    return new Plane(xi, yi, zi, ai, bi, ci, di, 1, c);
+    return new Plane(xi, yi, zi, ai, bi, ci, di, reflect, c);
 }
+
+Lumin* getLumin(char* st)
+{
+    SDL_Color c;
+    int l1, l2, l3;
+    std::vector<char*> parsed;
+
+    while (st != NULL)
+    {
+        std::cout << st << std::endl;
+        st = strtok (NULL, ",");
+        parsed.push_back(st);
+    }
+
+    char* lumin = strtok(parsed[4], " ");
+    l1 = atoi(lumin);
+    lumin = strtok(NULL, " ");
+    l2 = atoi(lumin);
+    lumin = strtok(NULL, " ");
+    l3 = atoi(lumin);
+
+    char* color = strtok(parsed[5], " ");
+    c.r = atoi(color);
+    color = strtok(NULL, " ");
+    c.g = atoi(color);
+    color = strtok(NULL, " ");
+    c.b = atoi(color);
+
+    return new Lumin(l1, l2, l3, c);
+ }
