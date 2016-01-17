@@ -38,7 +38,7 @@ Ray compute_reflection_vect(Ray r1, Ray r2)
 	double refX = - r1.getDirX() + 2 * scalar * r2.getDirX();
 	double refY = - r1.getDirY() + 2 * scalar * r2.getDirY();
 	double refZ = - r1.getDirZ() + 2 * scalar * r2.getDirZ();
-	return Ray(refX, refY, refZ);
+	return Ray(-refX, -refY, -refZ);
 }
 
 Point3 getUpLeft(Camera c, int w, int h, int d)
