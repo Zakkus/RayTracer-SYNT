@@ -46,15 +46,15 @@ int main(int argc, char** argv)
 	wh.r = 255;
 	wh.g = 255;
 	wh.b = 255;
-	Lumin lum = Lumin(120, 100, -20, wh);
+	Lumin lum = Lumin(120, 100, -20, wh, 100);
 	//li.push_back(&lum);
-	Lumin lums = Lumin(200, 0, -50, wh);
+	Lumin lums = Lumin(200, 0, -50, wh, 100000);
 	li.push_back(&lums);
 	SDL_Color col;
 	col.r = 100;
 	col.g = 255;
 	col.b = 0;
-	Lumin lol =  Lumin(50, 100, 2000, col);
+	Lumin lol =  Lumin(50, 100, 2000, col, 10);
 	//li.push_back(&lol);
 	SDL_Color col2;
 	col2.r = 255;
