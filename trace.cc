@@ -32,7 +32,7 @@ SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int r
 		double dist = obj->getT();
 		Ray ray3 = obj->getNormale(p);
 		ray3.Normalize();
-		SDL_Color c = l.ChangeColor(color, ray3, ray2);
+		SDL_Color c = l.ChangeColor(color, ray3, ray2, dist);
 		if (ref < 1 && obj->getReflect() == 1)
 		{
 		Ray re = Ray(- ray2.getDirX(), - ray2.getDirY(), -ray2.getDirZ());
