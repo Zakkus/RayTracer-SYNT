@@ -46,7 +46,7 @@ int main(int argc, char** argv)
 	wh.b = 255;
 	Lumin lum = Lumin(120, 100, -20, wh, 100);
 	//li.push_back(&lum);
-	Lumin lums = Lumin(200, 0, -50, wh, 100000);
+	Lumin lums = Lumin(10, 0, 140, wh, 1000);
 	li.push_back(&lums);
 	SDL_Color col;
 	col.r = 100;
@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 	Sphere d2 = Sphere(-100,0, 150, 25, 1,col2);
 	p.push_back(&d2);
 	Plane pl = Plane(0, 0, 5000, 0, 0, -1, 5, 0, col2);
-	//p.push_back(&pl);
+	p.push_back(&pl);
 	Sphere d3 = Sphere(100, 0, 150, 50, 1, col3);
 	p.push_back(&d3);
 	launch(s, cam, p, li);
