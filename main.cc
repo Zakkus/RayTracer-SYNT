@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 void setPixel(SDL_Surface* dst, int x, int y, Uint32 color)
 {
 	*((Uint32*)(dst->pixels) + x + y * dst->w) = color;
