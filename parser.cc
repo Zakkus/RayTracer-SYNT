@@ -126,7 +126,7 @@ Plane* getPlane(char* st)
 Lumin* getLumin(char* st)
 {
     SDL_Color c;
-    int l1, l2, l3;
+    int l1, l2, l3, power;
     std::vector<char*> parsed;
 
     while (st != NULL)
@@ -136,19 +136,21 @@ Lumin* getLumin(char* st)
         parsed.push_back(st);
     }
 
-    char* lumin = strtok(parsed[4], " ");
+    char* lumin = strtok(parsed[0], " ");
     l1 = atoi(lumin);
     lumin = strtok(NULL, " ");
     l2 = atoi(lumin);
     lumin = strtok(NULL, " ");
     l3 = atoi(lumin);
 
-    char* color = strtok(parsed[5], " ");
+    char* color = strtok(parsed[1], " ");
     c.r = atoi(color);
     color = strtok(NULL, " ");
     c.g = atoi(color);
     color = strtok(NULL, " ");
     c.b = atoi(color);
 
-    return new Lumin(l1, l2, l3, c);
+    power = atoi(parsed[2]);
+
+    return new Lumin(l1, l2, l3, c, power);
  }
