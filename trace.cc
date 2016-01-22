@@ -2,6 +2,7 @@
 
 SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int ref)
 {
+    ray.Normalize();
     double t = HUGE_VAL;
     SDL_Color* color;
     Primitive* obj = NULL;
@@ -14,7 +15,7 @@ SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int r
             t = v[k]->getT();
             color = v[k]->getColor();
         }
-    }	
+    }
     Point3 p = Point3((int)(c.getX() + ray.getDirX() * t), (int)(c.getY() +
                 ray.getDirY() * t), (int)(c.getZ() + ray.getDirZ() * t));
     SDL_Color cl;
