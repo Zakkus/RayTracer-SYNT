@@ -6,6 +6,8 @@
 #include "lumin.hh"
 #include "sphere.hh"
 #include "plane.hh"
+#include <stdio.h>
+#include <stdlib.h>
 
 SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int ref);
 

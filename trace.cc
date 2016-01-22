@@ -2,6 +2,7 @@
 
 SDL_Color Send(Ray ray, Point3 c, vector<Primitive*> v, vector<Lumin*> li, int ref)
 {
+    ray.Normalize();
 	double t = HUGE_VAL;
 	SDL_Color* color;
 	Primitive* obj = NULL;

@@ -14,14 +14,14 @@ SDL_Color Lumin::ChangeColor(SDL_Color* c, Ray r1, Ray r2, double dist)
 		angle = 0;
 	else
 		angle = 1 - angle;
-	double coeff = power / dist;
+	double coeff = power / abs(dist);
 	if (coeff > 1)
 		coeff = 1;
 	if (coeff < 0)
 		coeff = 0;
-    col.r = c->r * color.r * angle * coeff / 255;
-    col.g = c->g * color.g * angle * coeff / 255;
-    col.b = c->b * color.b * angle * coeff / 255;
+    col.r = c->r * color.r * angle *coeff/ 255;
+    col.g = c->g * color.g * angle *coeff/ 255;
+    col.b = c->b * color.b * angle *coeff / 255;
     return col;
 }
 

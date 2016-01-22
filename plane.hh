@@ -2,6 +2,8 @@
 #define PLANE_HH
 
 #include "primitive.hh"
+#include <stdlib.h>
+#include <stdio.h>
 
 class Plane : public Primitive
 {
