@@ -7,13 +7,11 @@ void parseScene(char** argv, std::vector<Primitive *> &prims, std::vector<Lumin 
     int n;
 
     getline(fs,st); 
-    std::cout << st << std::endl;
 
     n = atoi(st.c_str());
     while (n > 0)
     {
         getline(fs, st);
-        std::cout << st << std::endl;
         getObject(&st[0], prims, lumis);
         n--;
     }
@@ -63,12 +61,12 @@ Sphere* getSphere(char* st)
     color = strtok(NULL, " ");
     c.b = atoi(color);
 
-    char* normal = strtok(parsed[4], " ");
+    /*char* normal = strtok(parsed[4], " ");
     n1 = atoi(normal);
     normal = strtok(NULL, " ");
     n2 = atoi(normal);
     normal = strtok(NULL, " ");
-    n3 = atoi(normal);
+    n3 = atoi(normal);*/
 
     return new Sphere(cx, cy, cz, r, reflect, c);
 }
@@ -112,12 +110,12 @@ Plane* getPlane(char* st)
     color = strtok(NULL, " ");
     c.b = atoi(color);
 
-    char* normal = strtok(parsed[4], " ");
+    /*char* normal = strtok(parsed[4], " ");
     n1 = atoi(normal);
     normal = strtok(NULL, " ");
     n2 = atoi(normal);
     normal = strtok(NULL, " ");
-    n3 = atoi(normal);
+    n3 = atoi(normal);*/
 
 
     return new Plane(xi, yi, zi, ai, bi, ci, di, reflect, c);

@@ -40,7 +40,10 @@ int main(int argc, char** argv)
 	SDL_Surface* s = SDL_CreateRGBSurface(0,420,680,32,0,0,0,0);
 	vector<Primitive*> p = vector<Primitive*>();
 	vector<Lumin*> li = vector<Lumin*>();
-	SDL_Color wh;
+
+
+
+	/*SDL_Color wh;
 	wh.r = 255;
 	wh.g = 255;
 	wh.b = 255;
@@ -70,16 +73,17 @@ int main(int argc, char** argv)
 	Plane pl = Plane(0, 0, 5000, 0, 0, -1, 5, 0, col2);
 	p.push_back(&pl);
 	Sphere d3 = Sphere(100, 0, 150, 50, 1, col3);
-	p.push_back(&d3);
+	p.push_back(&d3);*/
+
+
+    parseScene(argv, p, li);
+
 	launch(s, cam, p, li);
 	SDL_BlitSurface(s, NULL, screen, NULL);
 	SDL_UpdateWindowSurface(w);
 	SDL_Delay(10000);
 	SDL_DestroyWindow(w);
 	SDL_Quit();
-
-
-	//vector<Primitive*> p = parseScene(argv);
 
 	return 0;
 }
