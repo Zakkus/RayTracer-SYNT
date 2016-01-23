@@ -13,7 +13,9 @@
 # include "lumin.hh"
 #include "camera.hh"
 
-void parseScene(char** argv, Camera** c,std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis);
+using namespace std;
+
+void parseScene(char** argv, vector<int> &vi, Camera** c,std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis);
 void getObject(char* st, Camera** c, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis);
 Sphere* getSphere(char* st);
 Plane* getPlane(char* st);

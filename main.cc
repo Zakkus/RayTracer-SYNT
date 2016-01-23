@@ -10,13 +10,13 @@ void setPixel(SDL_Surface* dst, int x, int y, Uint32 color)
     *((Uint32*)(dst->pixels) + x + y * dst->w) = color;
 }
 
-void launch(SDL_Surface* s, Camera c, vector<Primitive*> v, vector<Lumin*> li)
+void launch(SDL_Surface* s, vector<int>& vi, Camera c, vector<Primitive*> v, vector<Lumin*> li)
 {
-    Point3 init = getUpLeft(c, 600, 400, 100);
+    Point3 init = getUpLeft(c, vi[0], vi[1], vi[2]);
     for (int i = 0; i < s->w; i++)
         for (int j = 0; j < s->h; j++)
         {
-            Point3 where = getPoint(c, init, 600, 400, s->w, s->h, i, j);
+            Point3 where = getPoint(c, init, vi[0], vi[1], s->w, s->h, i, j);
             Ray ray = Ray(where.getX() - c.getX(), where.getY() - c.getY(), where.getZ() -c.getZ());
 
             SDL_Color cl = Send(ray, c.getPt(), v, li, 0);
@@ -40,6 +40,7 @@ int main(int argc, char** argv)
     SDL_Surface* s = SDL_CreateRGBSurface(0,640,480,32,0,0,0,0);
     vector<Primitive*> p = vector<Primitive*>();
     vector<Lumin*> li = vector<Lumin*>();
+    vector<int> vi = vector<int>();
     Camera* cam;
 
 
@@ -78,9 +79,8 @@ int main(int argc, char** argv)
     p.push_back(&d3);
 */
 
-    parseScene(argv, &cam, p, li);
-
-    launch(s, *cam, p, li);
+    parseScene(argv, vi, &cam, p, li);
+    launch(s,vi, *cam, p, li);
     SDL_BlitSurface(s, NULL, screen, NULL);
     SDL_UpdateWindowSurface(w);
     SDL_Delay(1000);

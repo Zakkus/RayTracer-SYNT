@@ -1,6 +1,6 @@
 #include "parser.hh"
 
-void parseScene(char** argv, Camera** c, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
+void parseScene(char** argv, vector<int> &vi,Camera** c, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
 {
     std::string st;
     std::ifstream fs(argv[1]);
@@ -9,6 +9,17 @@ void parseScene(char** argv, Camera** c, std::vector<Primitive *> &prims, std::v
     getline(fs,st); 
 
     n = atoi(st.c_str());
+    getline(fs, st);
+    char* ss = strtok(&st[0], " ");
+    int nb;
+    for (int i = 1; i < 3; i ++)
+    {
+    nb = atoi(ss);
+    vi.push_back(nb);
+    ss = strtok(NULL, " ");
+    }
+    nb = atoi(ss);
+    vi.push_back(nb);
     while (n > 0)
     {
         getline(fs, st);
