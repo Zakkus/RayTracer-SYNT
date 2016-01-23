@@ -1,6 +1,6 @@
 #include "parser.hh"
 
-void parseScene(char** argv, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
+void parseScene(char** argv, Camera** c, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
 {
     std::string st;
     std::ifstream fs(argv[1]);
@@ -12,15 +12,19 @@ void parseScene(char** argv, std::vector<Primitive *> &prims, std::vector<Lumin 
     while (n > 0)
     {
         getline(fs, st);
-        getObject(&st[0], prims, lumis);
+        getObject(&st[0], c, prims, lumis);
         n--;
     }
+    if (!c)
+        printf("OK\n");
 }
 
-void getObject(char* st, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
+void getObject(char* st, Camera** c, std::vector<Primitive *> &prims, std::vector<Lumin *> &lumis)
 {
     char* new_s = strtok (st,",");
 
+    if (strcmp(new_s, "camera") == 0)
+        getCam(new_s, c);
     if (strcmp(new_s, "sphere") == 0)
         prims.push_back(getSphere(new_s));
     if (strcmp(new_s, "plane") == 0)
@@ -152,3 +156,41 @@ Lumin* getLumin(char* st)
 
     return new Lumin(l1, l2, l3, c, power);
  }
+
+
+void getCam(char* st, Camera** ca)
+{
+    int x,y,z;
+    std::vector<char*> parsed;
+
+    while (st != NULL)
+    {
+        std::cout << st << std::endl;
+        st = strtok (NULL, ",");
+        parsed.push_back(st);
+    }
+    char* i = strtok(parsed[0], " ");
+    x = atoi(i);
+    i = strtok(NULL, " ");
+    y = atoi(i);
+    i = strtok(NULL, " ");
+    z = atoi(i);
+
+    char* j = strtok(parsed[1], " ");
+    double a = atoi(j);
+    j = strtok(NULL, " ");
+    double b = atoi(j);
+    j = strtok(NULL, " ");
+    double c = atoi(j);
+    Ray u = Ray(a,b,c);
+
+    char* k = strtok(parsed[2], " ");
+    a = atoi(k);
+    k = strtok(NULL, " ");
+    b = atoi(k);
+    k = strtok(NULL, " ");
+    c = atoi(k);
+    Ray v = Ray(a,b,c);
+    
+    *ca = new Camera(x,y,z,u,v);   
+}
